@@ -23,13 +23,12 @@ refs ={
 
 refs.start.addEventListener('click', startTimer);
 refs.stop.addEventListener('click', stopTimer);
+ 
+  
 
 const randomIntegerFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
-// console.log(randomIntegerFromInterval(0, 6))
-
-
 
 const maxN = colors.length -1;
 
@@ -39,15 +38,16 @@ let currentTime = null;
 function startTimer(){
   watchId = setInterval(() => {
     refs.background.style.backgroundColor =
-    colors[randomIntegerFromInterval(0, maxN)];
+    colors[randomIntegerFromInterval(0, maxN)];      
     }, 1000);
+    refs.start.disabled = true;
 }
 
 
 function stopTimer(){
+  refs.start.disabled = false;
   clearInterval(watchId)
-  clearInterval(currentTime)
-  
+  clearInterval(currentTime)  
 }
 
 
